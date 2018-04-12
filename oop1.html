@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>js04</title>
+        <style>
+            #canvas{
+                border: 1px solid black;
+            }
+        </style>
+</head>
+<body>
+    <canvas id="canvas" width="500" height="500"></canvas>
+    <script src="class/stage.js"></script>
+    <script src="class/shape.js"></script>
+    <script src="class/circle.js"></script>
+    <script src="class/rectangle.js"></script>
+    <script>
+        var stage = new Stage(document.getElementById("canvas"));
+        var circle1 = new Circle(20, 20, 20, '#ff0000');
+        var rectangle1 = new Rectangle(200, 200, '#ff6666', 20, 20);
+        stage.add(circle1);
+        stage.add(rectangle1);
+    </script>
+</body>
+</html>
