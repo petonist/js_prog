@@ -26,30 +26,36 @@
             this.kiirus = kiirus;
         }
 
-        //var gravity = 0.98;
+        var gravity = 0.98;
 
-        /*function põrka(){
+        function kukub(){
             Ruut.kiirus += gravity;
-        }*/
+            Ruut.y += Ruut.kiirus;
+
+            if(Ruut.y + Ruut.h > canvas.height){
+                Ruut.y = canvas.height - Ruut.h;
+            }
+        }
 
         var ruudud = [];
 
         for(var i = 0; i < 10; i++){
             var x = Math.random() * 500 + 1;
-            var y = -25;
+            var y = 10; //def -25
             var w = 20;
             var h = 20;
-            var kiirus = Math.random() * 20 + 1; 
+            var kiirus = 20; 
 
             ruudud.push(new Ruut(x, y, w, h, kiirus));
         }
+//https://www.w3schools.com/graphics/game_gravity.asp
 
         function joonista(){
-            //põrka();
+            kukub();
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
             for(var i = 0; i < ruudud.length; i++){
-                ctx.fillRect(ruudud.x, ruudud.y, ruudud.w. ruudud.h); // <---- argumentidega on mingi n**s
+                ctx.fillRect(ruudud[i].x, ruudud[i].y, ruudud[i].w, ruudud[i].h, ruudud[i].kiirus);
             }
             requestAnimationFrame(joonista);
         }
