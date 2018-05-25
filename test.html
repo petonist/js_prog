@@ -16,7 +16,11 @@
     <script>
         var canvas = document.getElementById("canvas");
         var ctx = canvas.getContext("2d");
+        
 
+        function Reload(){      //lehe refresh
+                location.reload();
+            }
 
         function Ruut(x, y, w, h, kiirus){
             this.x = x;
@@ -25,43 +29,37 @@
             this.h = h;
             this.kiirus = kiirus;
         }
-
-        var gravity = 0.98;
-
-        function kukub(){
-            Ruut.kiirus += gravity;
-            Ruut.y += Ruut.kiirus;
-
-            if(Ruut.y + Ruut.h > canvas.height){
-                Ruut.y = canvas.height - Ruut.h;
-            }
-        }
-
+        
         var ruudud = [];
-
         for(var i = 0; i < 10; i++){
             var x = Math.random() * 500 + 1;
             var y = 10; //def -25
             var w = 20;
             var h = 20;
             var kiirus = 20; 
-
             ruudud.push(new Ruut(x, y, w, h, kiirus));
         }
-//https://www.w3schools.com/graphics/game_gravity.asp
+        
+        var gravity = 0.98;
+        function kukub(){
+            Ruut.kiirus += gravity;
+            Ruut.y += Ruut.kiirus;
+            if(Ruut.y + Ruut.h > canvas.height){
+                Ruut.y = canvas.height - Ruut.h;
+            }
+        }
 
         function joonista(){
             kukub();
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-
             for(var i = 0; i < ruudud.length; i++){
                 ctx.fillRect(ruudud[i].x, ruudud[i].y, ruudud[i].w, ruudud[i].h, ruudud[i].kiirus);
             }
             requestAnimationFrame(joonista);
         }
-
         requestAnimationFrame(joonista);
-
     </script>
+
+    <button onclick="Reload()">lae uuesti</button>
 </body>
 </html>
