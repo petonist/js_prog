@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -16,7 +17,6 @@
     <script>
         var canvas = document.getElementById("canvas");
         var ctx = canvas.getContext("2d");
-        
 
         function Reload(){      //lehe refresh
                 location.reload();
@@ -40,6 +40,12 @@
             ruudud.push(new Ruut(x, y, w, h, kiirus));
         }
         
+        var ruutImg = new Image();
+        ruutImg.src = "img/btc.jpg";
+        ruutImg.onload = function(){
+                ctx.drawImage(ruutImg, 0, 0, 20, 20);
+            }
+
         var gravity = 0.98;
         function kukub(){
             Ruut.kiirus += gravity;
@@ -58,6 +64,10 @@
             requestAnimationFrame(joonista);
         }
         requestAnimationFrame(joonista);
+
+        /*window.addEventListener("mousedown", function (e){
+                return ruudud[i] = false;
+        */
     </script>
 
     <button onclick="Reload()">lae uuesti</button>
